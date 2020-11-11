@@ -1,0 +1,19 @@
+XL2
+H 1 areas 10 global symbols
+S hero_init Ref0000
+S _hero_sp_00 Ref0000
+S _hero_sp_01 Ref0000
+S _hero_sp_02 Ref0000
+S hero_update Ref0000
+S _hero_sp_03 Ref0000
+S _hero_sp_04 Ref0000
+S hero_restart Ref0000
+S _hero_sp_05 Ref0000
+S keyboard_inputs Ref0000
+S _hero_sp_06 Ref0000
+S _hero_sp_07 Ref0000
+S _hero_sp_08 Ref0000
+S .__.ABS. Def0000
+S hero_getIXPtr Ref0000
+S hero_getIYPtr Ref0000
+A _CODE size 0 flags 0 addr 0

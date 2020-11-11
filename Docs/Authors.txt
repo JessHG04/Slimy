@@ -1,0 +1,16 @@
+Slimy is a videogame created for Amstrad CPC
+
+---- Authors ----
+María del Rosario Fernández García
+David Llopis Romero
+Jéssica Hernández Gómez
+
+---- Contact ----
+María del Rosario Fernández García: charofernandezgarcia98@gmail.com
+David Llopis Romero: david-llopis@hotmail.com
+Jéssica Hernández Gómez: jessicahg04@gmail.com
+
+---- Twitter ----
+@BlueCatsGames
+
+Slimy is released under the GNU General Public License.

@@ -1,0 +1,8 @@
+XL2
+H 1 areas 5 global symbols
+S _background_z_size_z Def056D
+S _background_z Ref0000
+S .__.ABS. Def0000
+S _background_z_end Ref0000
+S _background_z_size Def4000
+A _CODE size 0 flags 0 addr 0

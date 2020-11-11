@@ -1,0 +1,56 @@
+-mjwx
+-i obj/Slimy.ihx
+-b _CODE = 0x1000
+-b _DATA = 0x0000
+-u
+-k /home/jess/Escritorio/cpctelera/cpctelera/tools/sdcc-3.6.8-r9946/bin/../share/sdcc/lib/z80
+-k /home/jess/Escritorio/cpctelera/cpctelera/tools/sdcc-3.6.8-r9946/share/sdcc/lib/z80
+-l /home/jess/Escritorio/cpctelera/cpctelera/cpctelera.lib
+-l z80
+obj/sprites/Salicornio.rel
+obj/sprites/BigFire.rel
+obj/sprites/Ghost.rel
+obj/sprites/Wave.rel
+obj/sprites/FireBall.rel
+obj/sprites/Obstacle.rel
+obj/sprites/Hero.rel
+obj/sprites/win_z.rel
+obj/sprites/background_prince_z.rel
+obj/sprites/background_hallow_z.rel
+obj/sprites/menu_z.rel
+obj/sprites/background_z.rel
+obj/music.rel
+obj/sprites/Win.h.rel
+obj/sprites/MenuInit.h.rel
+obj/sprites/BgPrince.h.rel
+obj/sprites/BgHallow.h.rel
+obj/sprites/BgInit.h.rel
+obj/cpctelera_functions.h.rel
+obj/hero.h.rel
+obj/hero.rel
+obj/main.rel
+obj/obstacles.h.rel
+obj/obstacles.rel
+obj/man/game.h.rel
+obj/man/gameover.h.rel
+obj/man/gameover.rel
+obj/man/game.rel
+obj/man/interrup.h.rel
+obj/man/interrup.rel
+obj/man/levels1_10.rel
+obj/man/levels11_20.rel
+obj/man/levels21_30.rel
+obj/man/menu.h.rel
+obj/man/menu.rel
+obj/man/nextlevel.h.rel
+obj/man/nextlevel.rel
+obj/man/timer.h.rel
+obj/man/timer.rel
+obj/man/win.h.rel
+obj/man/win.rel
+obj/sys/physics.h.rel
+obj/sys/physics.rel
+obj/sys/render.h.rel
+obj/sys/render.rel
+
+-e

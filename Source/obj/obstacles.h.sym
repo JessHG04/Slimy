@@ -1,0 +1,24 @@
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 1.
+Hexadecimal [16-Bits]
+
+Symbol Table
+
+    .__.$$$.=  2710 L   |     .__.ABS.=  0000 G   |     .__.CPU.=  0000 L
+    .__.H$L.=  0000 L   |     _obstacl   **** GX  |     _obstacl   **** GX
+    generar1   **** GX  |     generar1   **** GX  |     generar1   **** GX
+    generar1   **** GX  |     get_last   **** GX  |     last_obs   **** GX
+    max_obst=  0014 G   |     num_obst   **** GX  |     obs_dest   **** GX
+    obs_dest   **** GX  |     obs_doFo   **** GX  |     obs_getN   **** GX
+    obs_getO   **** GX  |     obstacle   **** GX  |     obstacle=  00C8 G
+    obstacle   **** GX  |     obstacle   **** GX  |     obstacle   **** GX
+    obstacle=  000A G   |     obstacle   **** GX  |     position   **** GX
+    set_x_la   **** GX  |     set_y_bi   **** GX  |     set_y_gh   **** GX
+    set_y_la   **** GX  |     set_y_wa   **** GX
+
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
+Hexadecimal [16-Bits]
+
+Area Table
+
+   0 _CODE      size    0   flags    0
+

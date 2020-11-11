@@ -1,0 +1,27 @@
+{
+  "splash": {
+    "enabled": true,
+    "background": "#eaeffd",
+    "delay": 3000,
+    "orientation": "auto"
+  },
+  "layout": {
+    "type": "gamepad",
+    "orientation": "auto"
+  },
+  "keymap": {
+    "up": "key_q",
+    "down": "key_a",
+    "left": "key_o",
+    "right": "key_p",
+    "a": "key_o",
+    "b": "key_p",
+    "x": "disabled",
+    "y": "disabled",
+    "start": "space",
+    "select": "disabled"
+  },
+  "video": {
+    "overscan": 0.6
+  }
+}

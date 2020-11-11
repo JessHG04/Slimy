@@ -1,0 +1,62 @@
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 1.
+Hexadecimal [16-Bits]
+
+Symbol Table
+
+    .__.$$$.=  2710 L   |     .__.ABS.=  0000 G   |     .__.CPU.=  0000 L
+    .__.H$L.=  0000 L   |     _juego_p   **** GX  |     _level_s   **** GX
+    _obstacl   **** GX  |     _obstacl   **** GX  |   0 comproba   0018 R
+  0 comproba   05BF R   |   0 comproba   0087 R   |   0 comproba   0120 R
+  0 comproba   01B5 R   |   0 comproba   0262 R   |   0 comproba   0300 R
+  0 comproba   03C2 R   |   0 comproba   0463 R   |   0 comproba   0517 R
+  0 comproba   0027 R   |   0 comproba   05D6 R   |   0 comproba   0096 R
+  0 comproba   012F R   |   0 comproba   01C4 R   |   0 comproba   0271 R
+  0 comproba   030F R   |   0 comproba   03D1 R   |   0 comproba   047A R
+  0 comproba   0526 R   |   0 comproba   0036 R   |   0 comproba   05F5 R
+  0 comproba   00A5 R   |   0 comproba   013E R   |   0 comproba   01D3 R
+  0 comproba   0280 R   |   0 comproba   0330 R   |   0 comproba   03E0 R
+  0 comproba   0491 R   |   0 comproba   0535 R   |   0 comproba   0045 R
+  0 comproba   060C R   |   0 comproba   00B4 R   |   0 comproba   014D R
+  0 comproba   01E2 R   |   0 comproba   028F R   |   0 comproba   033F R
+  0 comproba   03EF R   |   0 comproba   04A0 R   |   0 comproba   0544 R
+  0 comproba   0054 R   |   0 comproba   062B R   |   0 comproba   00C3 R
+  0 comproba   015C R   |   0 comproba   01F1 R   |   0 comproba   029E R
+  0 comproba   0360 R   |   0 comproba   03FE R   |   0 comproba   04C1 R
+  0 comproba   0565 R   |   0 comproba   064C R   |   0 comproba   00D2 R
+  0 comproba   016B R   |   0 comproba   0200 R   |   0 comproba   02AD R
+  0 comproba   036F R   |   0 comproba   040D R   |   0 comproba   04D0 R
+  0 comproba   0584 R   |   0 comproba   066D R   |   0 comproba   00E1 R
+  0 comproba   017A R   |   0 comproba   020F R   |   0 comproba   02BC R
+  0 comproba   037E R   |   0 comproba   041C R   |   0 comproba   04DF R
+  0 comproba   0593 R   |   0 comproba   00F0 R   |   0 comproba   021E R
+  0 comproba   02CB R   |   0 comproba   038D R   |   0 comproba   042B R
+  0 comproba   022D R   |     generar1   **** GX  |     generar1   **** GX
+    generar1   **** GX  |     generar1   **** GX  |     get_last   **** GX
+    init_gam   **** GX  |     last_obs   **** GX  |     level      **** GX
+    level_ob   **** GX  |     man_game   **** GX  |   0 man_game   0000 GR
+  0 man_game   05A2 GR  |     man_game   **** GX  |     man_game   **** GX
+    man_game   **** GX  |     man_game   **** GX  |     man_game   **** GX
+    man_game   **** GX  |     man_game   **** GX  |     man_game   **** GX
+    man_game   **** GX  |   0 man_game   0063 GR  |     man_game   **** GX
+    man_game   **** GX  |     man_game   **** GX  |     man_game   **** GX
+    man_game   **** GX  |     man_game   **** GX  |     man_game   **** GX
+    man_game   **** GX  |     man_game   **** GX  |     man_game   **** GX
+  0 man_game   00FF GR  |     man_game   **** GX  |   0 man_game   0189 GR
+  0 man_game   023C GR  |   0 man_game   02DA GR  |   0 man_game   039C GR
+  0 man_game   0442 GR  |   0 man_game   04F6 GR  |     man_game   **** GX
+    man_game   **** GX  |     man_game   **** GX  |     man_game   **** GX
+    max_obst=  0014 G   |     num_obst   **** GX  |     obs_dest   **** GX
+    obs_dest   **** GX  |     obs_doFo   **** GX  |     obs_getN   **** GX
+    obs_getO   **** GX  |     obstacle   **** GX  |     obstacle=  00C8 G
+    obstacle   **** GX  |     obstacle   **** GX  |     obstacle   **** GX
+    obstacle=  000A G   |     obstacle   **** GX  |     position   **** GX
+    set_x_la   **** GX  |     set_y_bi   **** GX  |     set_y_gh   **** GX
+    set_y_la   **** GX  |     set_y_wa   **** GX
+
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
+Hexadecimal [16-Bits]
+
+Area Table
+
+   0 _CODE      size  67C   flags    0
+

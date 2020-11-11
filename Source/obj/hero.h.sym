@@ -1,0 +1,23 @@
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 1.
+Hexadecimal [16-Bits]
+
+Symbol Table
+
+    .__.$$$.=  2710 L   |     .__.ABS.=  0000 G   |     .__.CPU.=  0000 L
+    .__.H$L.=  0000 L   |     _hero_sp   **** GX  |     _hero_sp   **** GX
+    _hero_sp   **** GX  |     _hero_sp   **** GX  |     _hero_sp   **** GX
+    _hero_sp   **** GX  |     _hero_sp   **** GX  |     _hero_sp   **** GX
+    _hero_sp   **** GX  |     h_animac=  0009     |     h_color =  0006 
+    h_h     =  0003     |     h_posici=  0008     |     h_salto =  0007 
+    h_vx    =  0004     |     h_vy    =  0005     |     h_w     =  0002 
+    h_x     =  0000     |     h_y     =  0001     |     hero_get   **** GX
+    hero_get   **** GX  |     hero_ini   **** GX  |     hero_res   **** GX
+    hero_upd   **** GX  |     keyboard   **** GX
+
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
+Hexadecimal [16-Bits]
+
+Area Table
+
+   0 _CODE      size    0   flags    0
+

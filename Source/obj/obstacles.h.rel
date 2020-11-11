@@ -1,0 +1,32 @@
+XL2
+H 1 areas 1D global symbols
+S generar1entidadBig Ref0000
+S generar1entidadWave Ref0000
+S set_y_bigobstacle Ref0000
+S obstacle_getIXPtr Ref0000
+S obstacle_getIYPtr Ref0000
+S obs_destroy_all Ref0000
+S obstacle_array Ref0000
+S last_obs_ptr Ref0000
+S obs_getObstacleArray_IX Ref0000
+S obs_getNumObstacles_A Ref0000
+S position_update Ref0000
+S num_obstacles_marcados Ref0000
+S .__.ABS. Def0000
+S obstacle_init Ref0000
+S set_x_last_obstacle Ref0000
+S set_y_last_obstacle Ref0000
+S obstacle_array_size Def00C8
+S max_obstacles Def0014
+S obstacle_size Def000A
+S set_y_ghost Ref0000
+S obs_destroy Ref0000
+S get_lastObsPtr Ref0000
+S generar1entidad Ref0000
+S obstacle_update Ref0000
+S generar1entidadGhost Ref0000
+S set_y_wave Ref0000
+S obs_doForAll Ref0000
+S _obstacle_sp_0 Ref0000
+S _obstacle_sp_1 Ref0000
+A _CODE size 0 flags 0 addr 0

@@ -1,0 +1,1271 @@
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 1.
+Hexadecimal [16-Bits]
+
+
+
+                              1 ;;----------------------------------LICENSE NOTICE-----------------------------------------------------
+                              2 ;;Slimy is a challenging videogame made for Amstrad CPC
+                              3 ;;    Copyright (C) 2020  Maria del Rosario Fernandez Garcia // David Llopis Romero // Jessica Hernandez Gomez
+                              4 ;;
+                              5 ;;    This program is free software: you can redistribute it and/or modify
+                              6 ;;    it under the terms of the GNU General Public License as published by
+                              7 ;;    the Free Software Foundation, either version 3 of the License, or
+                              8 ;;    (at your option) any later version.
+                              9 ;;
+                             10 ;;    This program is distributed in the hope that it will be useful,
+                             11 ;;    but WITHOUT ANY WARRANTY; without even the implied warranty of
+                             12 ;;    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+                             13 ;;    GNU General Public License for more details.
+                             14 ;;
+                             15 ;;    You should have received a copy of the GNU General Public License
+                             16 ;;    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+                             17 ;;------------------------------------------------------------------------------------------------------
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 2.
+Hexadecimal [16-Bits]
+
+
+
+                             18 .include "game.h.s"
+                              1 ;;----------------------------------LICENSE NOTICE-----------------------------------------------------
+                              2 ;;Slimy is a challenging videogame made for Amstrad CPC
+                              3 ;;    Copyright (C) 2020  Maria del Rosario Fernandez Garcia // David Llopis Romero // Jessica Hernandez Gomez
+                              4 ;;
+                              5 ;;    This program is free software: you can redistribute it and/or modify
+                              6 ;;    it under the terms of the GNU General Public License as published by
+                              7 ;;    the Free Software Foundation, either version 3 of the License, or
+                              8 ;;    (at your option) any later version.
+                              9 ;;
+                             10 ;;    This program is distributed in the hope that it will be useful,
+                             11 ;;    but WITHOUT ANY WARRANTY; without even the implied warranty of
+                             12 ;;    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+                             13 ;;    GNU General Public License for more details.
+                             14 ;;
+                             15 ;;    You should have received a copy of the GNU General Public License
+                             16 ;;    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+                             17 ;;------------------------------------------------------------------------------------------------------
+                             18 .globl man_game_init
+                             19 .globl man_game_restart
+                             20 .globl man_game_init_lvl_123
+                             21 .globl man_game_check_level
+                             22 .globl man_game_init_lvl
+                             23 .globl _juego_pausado
+                             24 .globl init_game
+                             25 .globl _level_seconds
+                             26 .globl level_obstacles
+                             27 .globl level
+                             28 
+                             29 .globl man_game_controller_lvl_1
+                             30 .globl man_game_controller_lvl_2
+                             31 .globl man_game_controller_lvl_3
+                             32 .globl man_game_controller_lvl_4
+                             33 .globl man_game_controller_lvl_5
+                             34 .globl man_game_controller_lvl_6
+                             35 .globl man_game_controller_lvl_7
+                             36 .globl man_game_controller_lvl_8
+                             37 .globl man_game_controller_lvl_9
+                             38 .globl man_game_controller_lvl_10
+                             39 .globl man_game_controller_lvl_11
+                             40 .globl man_game_controller_lvl_12
+                             41 .globl man_game_controller_lvl_13
+                             42 .globl man_game_controller_lvl_14
+                             43 .globl man_game_controller_lvl_15
+                             44 .globl man_game_controller_lvl_16
+                             45 .globl man_game_controller_lvl_17
+                             46 .globl man_game_controller_lvl_18
+                             47 .globl man_game_controller_lvl_19
+                             48 .globl man_game_controller_lvl_20
+                             49 .globl man_game_controller_lvl_21
+                             50 .globl man_game_controller_lvl_22
+                             51 .globl man_game_controller_lvl_23
+                             52 .globl man_game_controller_lvl_24
+                             53 .globl man_game_controller_lvl_25
+                             54 .globl man_game_controller_lvl_26
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 3.
+Hexadecimal [16-Bits]
+
+
+
+                             55 .globl man_game_controller_lvl_27
+                             56 .globl man_game_controller_lvl_28
+                             57 .globl man_game_controller_lvl_29
+                             58 .globl man_game_controller_lvl_30
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 4.
+Hexadecimal [16-Bits]
+
+
+
+                             19 .include "obstacles.h.s"
+                              1 ;;----------------------------------LICENSE NOTICE-----------------------------------------------------
+                              2 ;;Slimy is a challenging videogame made for Amstrad CPC
+                              3 ;;    Copyright (C) 2020  Maria del Rosario Fernandez Garcia // David Llopis Romero // Jessica Hernandez Gomez
+                              4 ;;
+                              5 ;;    This program is free software: you can redistribute it and/or modify
+                              6 ;;    it under the terms of the GNU General Public License as published by
+                              7 ;;    the Free Software Foundation, either version 3 of the License, or
+                              8 ;;    (at your option) any later version.
+                              9 ;;
+                             10 ;;    This program is distributed in the hope that it will be useful,
+                             11 ;;    but WITHOUT ANY WARRANTY; without even the implied warranty of
+                             12 ;;    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+                             13 ;;    GNU General Public License for more details.
+                             14 ;;
+                             15 ;;    You should have received a copy of the GNU General Public License
+                             16 ;;    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+                             17 ;;------------------------------------------------------------------------------------------------------
+                             18 .globl obstacle_update
+                             19 .globl obstacle_init
+                             20 .globl obstacle_getIYPtr
+                             21 .globl obstacle_getIXPtr
+                             22 .globl _obstacle_sp_0
+                             23 .globl _obstacle_sp_1
+                             24 .globl obstacle_size
+                             25 .globl max_obstacles
+                             26 .globl obstacle_array_size
+                             27 .globl generar1entidad
+                             28 .globl generar1entidadWave
+                             29 .globl obs_doForAll
+                             30 .globl get_lastObsPtr
+                             31 .globl set_y_last_obstacle
+                             32 .globl set_x_last_obstacle
+                             33 .globl set_y_wave
+                             34 .globl obs_getObstacleArray_IX
+                             35 .globl obs_getObstacleArray_IX
+                             36 .globl obs_getNumObstacles_A
+                             37 .globl obs_destroy
+                             38 .globl num_obstacles_marcados
+                             39 .globl last_obs_ptr
+                             40 .globl obstacle_array
+                             41 .globl obs_destroy_all
+                             42 .globl generar1entidadGhost
+                             43 .globl set_y_ghost
+                             44 .globl position_update
+                             45 .globl generar1entidadBig
+                             46 .globl set_y_bigobstacle
+                             47 ;;.globl obstacle_restart
+                             48 ;;.globl set_y_obstacles
+                             49 ;;.globl obs_destroy_all
+                             50 ;;;;;;;;;;;;;;;;;;;;;;
+                             51 ;;                  ;;
+                             52 ;;    CONSTANTES    ;;
+                             53 ;;                  ;;
+                             54 ;;;;;;;;;;;;;;;;;;;;;;
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 5.
+Hexadecimal [16-Bits]
+
+
+
+                     000A    55 obstacle_size  == 10
+                     0014    56 max_obstacles == 20
+                     00C8    57 obstacle_array_size == obstacle_size*max_obstacles
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 6.
+Hexadecimal [16-Bits]
+
+
+
+                             20 
+                             21 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             22 ;;
+                             23 ;;
+                             24 ;;  NIVEL 1
+                             25 ;;
+                             26 ;;
+                             27 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   0000                      28 man_game_controller_lvl_1::
+   0000 3A 00 00      [13]   29     ld a, (_level_seconds)  
+   0003 FE 06         [ 7]   30     cp #0x06                      
+   0005 28 11         [12]   31     jr z, comprobarEntidades1lvl1
+   0007 FE 0A         [ 7]   32     cp #0x0A
+   0009 28 1C         [12]   33     jr z, comprobarEntidades2lvl1
+   000B FE 0E         [ 7]   34     cp #0x0E
+   000D 28 27         [12]   35     jr z, comprobarEntidades3lvl1
+   000F FE 14         [ 7]   36     cp #0x14
+   0011 28 32         [12]   37     jr z, comprobarEntidades4lvl1
+   0013 FE 18         [ 7]   38     cp #0x18
+   0015 28 3D         [12]   39     jr z, comprobarEntidades5lvl1
+   0017 C9            [10]   40     ret
+                             41     
+   0018                      42     comprobarEntidades1lvl1:
+   0018 3A 00 00      [13]   43     ld a, (level_obstacles)
+   001B FE 01         [ 7]   44     cp #0x01                ;; Si ya tengo 1 entidades no compruebo ninguna mas
+   001D C8            [11]   45     ret z
+   001E 3E B4         [ 7]   46         ld a, #0xB4
+   0020 CD 00 00      [17]   47         call set_y_last_obstacle
+   0023 CD 00 00      [17]   48         call generar1entidad
+   0026 C9            [10]   49         ret
+                             50     
+   0027                      51     comprobarEntidades2lvl1:
+   0027 3A 00 00      [13]   52     ld a, (level_obstacles)
+   002A FE 02         [ 7]   53     cp #0x02                ;; Si ya tengo 2 entidades no compruebo ninguna mas
+   002C C8            [11]   54     ret z
+   002D 3E 76         [ 7]   55         ld a, #0x76
+   002F CD 00 00      [17]   56         call set_y_last_obstacle  
+   0032 CD 00 00      [17]   57         call generar1entidad
+   0035 C9            [10]   58         ret
+                             59     
+   0036                      60     comprobarEntidades3lvl1:
+   0036 3A 00 00      [13]   61     ld a, (level_obstacles)
+   0039 FE 03         [ 7]   62     cp #0x03                ;; Si ya tengo 3 entidades no compruebo ninguna mas
+   003B C8            [11]   63     ret z
+   003C 3E B4         [ 7]   64         ld a, #0xB4
+   003E CD 00 00      [17]   65         call set_y_last_obstacle
+   0041 CD 00 00      [17]   66         call generar1entidad
+   0044 C9            [10]   67         ret 
+                             68     
+   0045                      69     comprobarEntidades4lvl1:
+   0045 3A 00 00      [13]   70     ld a, (level_obstacles)
+   0048 FE 04         [ 7]   71     cp #0x04                ;; Si ya tengo 4 entidades no compruebo ninguna mas
+   004A C8            [11]   72     ret z
+   004B 3E 76         [ 7]   73         ld a, #0x76
+   004D CD 00 00      [17]   74         call set_y_last_obstacle     
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 7.
+Hexadecimal [16-Bits]
+
+
+
+   0050 CD 00 00      [17]   75         call generar1entidad
+   0053 C9            [10]   76         ret        
+                             77 
+   0054                      78     comprobarEntidades5lvl1:
+   0054 3A 00 00      [13]   79     ld a, (level_obstacles)
+   0057 FE 05         [ 7]   80     cp #0x05                ;; Si ya tengo 5 entidades no compruebo ninguna mas
+   0059 C8            [11]   81     ret z
+   005A 3E B4         [ 7]   82         ld a, #0xB4
+   005C CD 00 00      [17]   83         call set_y_last_obstacle     
+   005F CD 00 00      [17]   84         call generar1entidad
+   0062 C9            [10]   85         ret  
+                             86 
+                             87 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                             88 ;;
+                             89 ;;
+                             90 ;;  NIVEL 2
+                             91 ;;
+                             92 ;;
+                             93 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   0063                      94 man_game_controller_lvl_2::
+   0063 3A 00 00      [13]   95     ld a, (_level_seconds)  
+   0066 FE 02         [ 7]   96     cp #0x02                      
+   0068 28 1D         [12]   97     jr z, comprobarEntidades1lvl2
+   006A FE 04         [ 7]   98     cp #0x04
+   006C 28 28         [12]   99     jr z, comprobarEntidades2lvl2
+   006E FE 07         [ 7]  100     cp #0x07
+   0070 28 33         [12]  101     jr z, comprobarEntidades3lvl2
+   0072 FE 0A         [ 7]  102     cp #0x0A
+   0074 28 3E         [12]  103     jr z, comprobarEntidades4lvl2
+   0076 FE 0D         [ 7]  104     cp #0x0D
+   0078 28 49         [12]  105     jr z, comprobarEntidades5lvl2
+   007A FE 0E         [ 7]  106     cp #0x0E
+   007C 28 54         [12]  107     jr z, comprobarEntidades6lvl2
+   007E FE 12         [ 7]  108     cp #0x12
+   0080 28 5F         [12]  109     jr z, comprobarEntidades7lvl2
+   0082 FE 17         [ 7]  110     cp #0x17
+   0084 28 6A         [12]  111     jr z, comprobarEntidades8lvl2
+   0086 C9            [10]  112     ret
+                            113     
+   0087                     114     comprobarEntidades1lvl2:
+   0087 3A 00 00      [13]  115     ld a, (level_obstacles)
+   008A FE 01         [ 7]  116     cp #0x01                ;; Si ya tengo 1 entidades no compruebo ninguna mas
+   008C C8            [11]  117     ret z
+   008D 3E 76         [ 7]  118         ld a, #0x76
+   008F CD 00 00      [17]  119         call set_y_last_obstacle 
+   0092 CD 00 00      [17]  120         call generar1entidad
+   0095 C9            [10]  121         ret
+                            122     
+   0096                     123     comprobarEntidades2lvl2:
+   0096 3A 00 00      [13]  124     ld a, (level_obstacles)
+   0099 FE 02         [ 7]  125     cp #0x02                ;; Si ya tengo 2 entidades no compruebo ninguna mas
+   009B C8            [11]  126     ret z
+   009C 3E B4         [ 7]  127         ld a, #0xB4
+   009E CD 00 00      [17]  128         call set_y_last_obstacle 
+   00A1 CD 00 00      [17]  129         call generar1entidad
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 8.
+Hexadecimal [16-Bits]
+
+
+
+   00A4 C9            [10]  130         ret  
+                            131     
+   00A5                     132     comprobarEntidades3lvl2:
+   00A5 3A 00 00      [13]  133     ld a, (level_obstacles)
+   00A8 FE 03         [ 7]  134     cp #0x03                ;; Si ya tengo 3 entidades no compruebo ninguna mas
+   00AA C8            [11]  135     ret z
+   00AB 3E 76         [ 7]  136         ld a, #0x76
+   00AD CD 00 00      [17]  137         call set_y_last_obstacle 
+   00B0 CD 00 00      [17]  138         call generar1entidad
+   00B3 C9            [10]  139         ret 
+                            140     
+   00B4                     141     comprobarEntidades4lvl2:
+   00B4 3A 00 00      [13]  142     ld a, (level_obstacles)
+   00B7 FE 04         [ 7]  143     cp #0x04                ;; Si ya tengo 4 entidades no compruebo ninguna mas
+   00B9 C8            [11]  144     ret  z
+   00BA 3E 76         [ 7]  145         ld a, #0x76
+   00BC CD 00 00      [17]  146         call set_y_last_obstacle 
+   00BF CD 00 00      [17]  147         call generar1entidad
+   00C2 C9            [10]  148         ret 
+                            149 
+   00C3                     150     comprobarEntidades5lvl2:    
+   00C3 3A 00 00      [13]  151     ld a, (level_obstacles)
+   00C6 FE 05         [ 7]  152     cp #0x05                ;; Si ya tengo 5 entidades no compruebo ninguna mas
+   00C8 C8            [11]  153     ret z
+   00C9 3E B4         [ 7]  154         ld a, #0xB4
+   00CB CD 00 00      [17]  155         call set_y_last_obstacle 
+   00CE CD 00 00      [17]  156         call generar1entidad
+   00D1 C9            [10]  157         ret
+                            158     
+   00D2                     159     comprobarEntidades6lvl2:    
+   00D2 3A 00 00      [13]  160     ld a, (level_obstacles)
+   00D5 FE 06         [ 7]  161     cp #0x06                ;; Si ya tengo 6 entidades no compruebo ninguna mas
+   00D7 C8            [11]  162     ret z
+   00D8 3E 96         [ 7]  163         ld a, #0x96
+   00DA CD 00 00      [17]  164         call set_y_last_obstacle 
+   00DD CD 00 00      [17]  165         call generar1entidad
+   00E0 C9            [10]  166         ret   
+                            167     
+   00E1                     168     comprobarEntidades7lvl2:
+   00E1 3A 00 00      [13]  169     ld a, (level_obstacles)
+   00E4 FE 07         [ 7]  170     cp #0x07                ;; Si ya tengo 7 entidades no compruebo ninguna mas
+   00E6 C8            [11]  171     ret z
+   00E7 3E 76         [ 7]  172         ld a, #0x76
+   00E9 CD 00 00      [17]  173         call set_y_last_obstacle 
+   00EC CD 00 00      [17]  174         call generar1entidad
+   00EF C9            [10]  175         ret   
+                            176 
+   00F0                     177     comprobarEntidades8lvl2:
+   00F0 3A 00 00      [13]  178     ld a, (level_obstacles)
+   00F3 FE 08         [ 7]  179     cp #0x08                ;; Si ya tengo 8 entidades no compruebo ninguna mas
+   00F5 C8            [11]  180     ret z
+   00F6 3E B4         [ 7]  181         ld a, #0xB4
+   00F8 CD 00 00      [17]  182         call set_y_last_obstacle 
+   00FB CD 00 00      [17]  183         call generar1entidad
+   00FE C9            [10]  184         ret   
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 9.
+Hexadecimal [16-Bits]
+
+
+
+                            185 
+                            186 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                            187 ;;
+                            188 ;;
+                            189 ;;  NIVEL 3
+                            190 ;;
+                            191 ;;
+                            192 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   00FF                     193 man_game_controller_lvl_3::
+   00FF 3A 00 00      [13]  194     ld a, (_level_seconds)  
+   0102 FE 02         [ 7]  195     cp #0x02                      
+   0104 28 1A         [12]  196     jr z, comprobarEntidades1lvl3
+   0106 FE 04         [ 7]  197     cp #0x04
+   0108 28 25         [12]  198     jr z, comprobarEntidades2lvl3
+   010A FE 06         [ 7]  199     cp #0x06
+   010C 28 30         [12]  200     jr z, comprobarEntidades3lvl3
+   010E FE 09         [ 7]  201     cp #0x09
+   0110 28 3B         [12]  202     jr z, comprobarEntidades4lvl3
+   0112 FE 12         [ 7]  203     cp #0x12
+   0114 28 46         [12]  204     jr z, comprobarEntidades5lvl3
+   0116 FE 15         [ 7]  205     cp #0x15
+   0118 28 51         [12]  206     jr z, comprobarEntidades6lvl3
+   011A FE 18         [ 7]  207     cp #0x18
+   011C CA 7A 01      [10]  208     jp z, comprobarEntidades7lvl3
+   011F C9            [10]  209     ret
+                            210 
+   0120                     211     comprobarEntidades1lvl3:
+   0120 3A 00 00      [13]  212     ld a, (level_obstacles)
+   0123 FE 01         [ 7]  213     cp #0x01                ;; Si ya tengo 1 entidades no compruebo ninguna mas
+   0125 C8            [11]  214     ret z
+   0126 3E B4         [ 7]  215         ld a, #0xB4
+   0128 CD 00 00      [17]  216         call set_y_last_obstacle
+   012B CD 00 00      [17]  217         call generar1entidad
+   012E C9            [10]  218         ret
+                            219     
+   012F                     220     comprobarEntidades2lvl3:
+   012F 3A 00 00      [13]  221     ld a, (level_obstacles)
+   0132 FE 02         [ 7]  222     cp #0x02                ;; Si ya tengo 2 entidades no compruebo ninguna mas
+   0134 C8            [11]  223     ret z
+   0135 3E AC         [ 7]  224         ld a, #0xAC
+   0137 CD 00 00      [17]  225         call set_y_last_obstacle
+   013A CD 00 00      [17]  226         call generar1entidad    
+   013D C9            [10]  227         ret
+                            228 
+   013E                     229     comprobarEntidades3lvl3:
+   013E 3A 00 00      [13]  230     ld a, (level_obstacles)
+   0141 FE 03         [ 7]  231     cp #0x03                ;; Si ya tengo 3 entidades no compruebo ninguna mas
+   0143 C8            [11]  232     ret z
+   0144 3E 76         [ 7]  233         ld a, #0x76
+   0146 CD 00 00      [17]  234         call set_y_last_obstacle
+   0149 CD 00 00      [17]  235         call generar1entidad
+   014C C9            [10]  236         ret 
+                            237     
+   014D                     238     comprobarEntidades4lvl3:
+   014D 3A 00 00      [13]  239     ld a, (level_obstacles)
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 10.
+Hexadecimal [16-Bits]
+
+
+
+   0150 FE 04         [ 7]  240     cp #0x04                ;; Si ya tengo 4 entidades no compruebo ninguna mas
+   0152 C8            [11]  241     ret z
+   0153 3E B4         [ 7]  242         ld a, #0xB4
+   0155 CD 00 00      [17]  243         call set_y_last_obstacle
+   0158 CD 00 00      [17]  244         call generar1entidad
+   015B C9            [10]  245         ret   
+                            246 
+   015C                     247     comprobarEntidades5lvl3:
+   015C 3A 00 00      [13]  248     ld a, (level_obstacles)
+   015F FE 05         [ 7]  249     cp #0x05                ;; Si ya tengo 5 entidades no compruebo ninguna mas
+   0161 C8            [11]  250     ret z
+   0162 3E 76         [ 7]  251         ld a, #0x76
+   0164 CD 00 00      [17]  252         call set_y_last_obstacle
+   0167 CD 00 00      [17]  253         call generar1entidad
+   016A C9            [10]  254         ret 
+                            255 
+   016B                     256     comprobarEntidades6lvl3:
+   016B 3A 00 00      [13]  257     ld a, (level_obstacles)
+   016E FE 06         [ 7]  258     cp #0x06                ;; Si ya tengo 6 entidades no compruebo ninguna mas
+   0170 C8            [11]  259     ret z
+   0171 3E 96         [ 7]  260         ld a, #0x96
+   0173 CD 00 00      [17]  261         call set_y_last_obstacle
+   0176 CD 00 00      [17]  262         call generar1entidad
+   0179 C9            [10]  263         ret 
+                            264     
+   017A                     265     comprobarEntidades7lvl3:
+   017A 3A 00 00      [13]  266      ld a, (level_obstacles)
+   017D FE 07         [ 7]  267      cp #0x07                ;; Si ya tengo 7 entidades no compruebo ninguna mas
+   017F C8            [11]  268      ret z
+   0180 3E B4         [ 7]  269         ld a, #0xB4
+   0182 CD 00 00      [17]  270         call set_y_last_obstacle
+   0185 CD 00 00      [17]  271         call generar1entidad
+   0188 C9            [10]  272         ret 
+                            273 
+                            274 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                            275 ;;
+                            276 ;;
+                            277 ;;  NIVEL 4
+                            278 ;;
+                            279 ;;
+                            280 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   0189                     281 man_game_controller_lvl_4::
+   0189 3A 00 00      [13]  282     ld a, (_level_seconds)  
+   018C FE 02         [ 7]  283     cp #0x02                      
+   018E 28 25         [12]  284     jr z, comprobarEntidades1lvl4
+   0190 FE 05         [ 7]  285     cp #0x05
+   0192 28 30         [12]  286     jr z, comprobarEntidades2lvl4
+   0194 FE 07         [ 7]  287     cp #0x07
+   0196 28 3B         [12]  288     jr z, comprobarEntidades3lvl4
+   0198 FE 08         [ 7]  289     cp #0x08
+   019A 28 46         [12]  290     jr z, comprobarEntidades4lvl4
+   019C FE 0B         [ 7]  291     cp #0x0B
+   019E 28 51         [12]  292     jr z, comprobarEntidades5lvl4
+   01A0 FE 0F         [ 7]  293     cp #0x0F
+   01A2 CA 00 02      [10]  294     jp z, comprobarEntidades6lvl4
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 11.
+Hexadecimal [16-Bits]
+
+
+
+   01A5 FE 12         [ 7]  295     cp #0x12
+   01A7 CA 0F 02      [10]  296     jp z, comprobarEntidades7lvl4
+   01AA FE 16         [ 7]  297     cp #0x16
+   01AC CA 1E 02      [10]  298     jp z, comprobarEntidades8lvl4
+   01AF FE 17         [ 7]  299     cp #0x17
+   01B1 CA 2D 02      [10]  300     jp z, comprobarEntidades9lvl4
+   01B4 C9            [10]  301     ret
+                            302 
+   01B5                     303     comprobarEntidades1lvl4:
+   01B5 3A 00 00      [13]  304     ld a, (level_obstacles)
+   01B8 FE 01         [ 7]  305     cp #0x01                ;; Si ya tengo 1 entidades no compruebo ninguna mas
+   01BA C8            [11]  306     ret z
+   01BB 3E B4         [ 7]  307         ld a, #0xB4
+   01BD CD 00 00      [17]  308         call set_y_last_obstacle 
+   01C0 CD 00 00      [17]  309         call generar1entidad
+   01C3 C9            [10]  310         ret
+                            311     
+   01C4                     312     comprobarEntidades2lvl4:
+   01C4 3A 00 00      [13]  313     ld a, (level_obstacles)
+   01C7 FE 02         [ 7]  314     cp #0x02                ;; Si ya tengo 2 entidades no compruebo ninguna mas
+   01C9 C8            [11]  315     ret z
+   01CA 3E 76         [ 7]  316         ld a, #0x76
+   01CC CD 00 00      [17]  317         call set_y_last_obstacle 
+   01CF CD 00 00      [17]  318         call generar1entidad    
+   01D2 C9            [10]  319         ret
+                            320 
+   01D3                     321     comprobarEntidades3lvl4:
+   01D3 3A 00 00      [13]  322     ld a, (level_obstacles)
+   01D6 FE 03         [ 7]  323     cp #0x03                ;; Si ya tengo 3 entidades no compruebo ninguna mas
+   01D8 C8            [11]  324     ret z
+   01D9 3E 76         [ 7]  325         ld a, #0x76
+   01DB CD 00 00      [17]  326         call set_y_last_obstacle 
+   01DE CD 00 00      [17]  327         call generar1entidad
+   01E1 C9            [10]  328         ret 
+                            329     
+   01E2                     330     comprobarEntidades4lvl4:
+   01E2 3A 00 00      [13]  331     ld a, (level_obstacles)
+   01E5 FE 04         [ 7]  332     cp #0x04                ;; Si ya tengo 4 entidades no compruebo ninguna mas
+   01E7 C8            [11]  333     ret z
+   01E8 3E B4         [ 7]  334         ld a, #0xB4
+   01EA CD 00 00      [17]  335         call set_y_last_obstacle 
+   01ED CD 00 00      [17]  336         call generar1entidad
+   01F0 C9            [10]  337         ret   
+                            338 
+   01F1                     339     comprobarEntidades5lvl4:
+   01F1 3A 00 00      [13]  340     ld a, (level_obstacles)
+   01F4 FE 05         [ 7]  341     cp #0x05                ;; Si ya tengo 5 entidades no compruebo ninguna mas
+   01F6 C8            [11]  342     ret z
+   01F7 3E 76         [ 7]  343         ld a, #0x76
+   01F9 CD 00 00      [17]  344         call set_y_wave
+   01FC CD 00 00      [17]  345         call generar1entidadWave
+   01FF C9            [10]  346         ret 
+                            347 
+   0200                     348     comprobarEntidades6lvl4:
+   0200 3A 00 00      [13]  349     ld a, (level_obstacles)
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 12.
+Hexadecimal [16-Bits]
+
+
+
+   0203 FE 06         [ 7]  350     cp #0x06                ;; Si ya tengo 6 entidades no compruebo ninguna mas
+   0205 C8            [11]  351     ret z
+   0206 3E B4         [ 7]  352         ld a, #0xB4
+   0208 CD 00 00      [17]  353         call set_y_last_obstacle 
+   020B CD 00 00      [17]  354         call generar1entidad
+   020E C9            [10]  355         ret 
+                            356     
+   020F                     357     comprobarEntidades7lvl4:
+   020F 3A 00 00      [13]  358      ld a, (level_obstacles)
+   0212 FE 07         [ 7]  359      cp #0x07                ;; Si ya tengo 7 entidades no compruebo ninguna mas
+   0214 C8            [11]  360      ret z
+   0215 3E 76         [ 7]  361         ld a, #0x76
+   0217 CD 00 00      [17]  362         call set_y_last_obstacle 
+   021A CD 00 00      [17]  363         call generar1entidad
+   021D C9            [10]  364         ret 
+                            365 
+   021E                     366     comprobarEntidades8lvl4:
+   021E 3A 00 00      [13]  367     ld a, (level_obstacles)
+   0221 FE 08         [ 7]  368     cp #0x08                ;; Si ya tengo 8 entidades no compruebo ninguna mas
+   0223 C8            [11]  369     ret z
+   0224 3E 76         [ 7]  370         ld a, #0x76
+   0226 CD 00 00      [17]  371         call set_y_last_obstacle 
+   0229 CD 00 00      [17]  372         call generar1entidad
+   022C C9            [10]  373         ret 
+                            374     
+   022D                     375     comprobarEntidades9lvl4:
+   022D 3A 00 00      [13]  376      ld a, (level_obstacles)
+   0230 FE 09         [ 7]  377      cp #0x09                ;; Si ya tengo 9 entidades no compruebo ninguna mas
+   0232 C8            [11]  378      ret z
+   0233 3E B4         [ 7]  379         ld a, #0xB4
+   0235 CD 00 00      [17]  380         call set_y_last_obstacle 
+   0238 CD 00 00      [17]  381         call generar1entidad
+   023B C9            [10]  382         ret 
+                            383 
+                            384 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                            385 ;;
+                            386 ;;
+                            387 ;;  NIVEL 5
+                            388 ;;
+                            389 ;;
+                            390 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   023C                     391 man_game_controller_lvl_5::
+   023C 3A 00 00      [13]  392     ld a, (_level_seconds)  
+   023F FE 02         [ 7]  393     cp #0x02                      
+   0241 28 1F         [12]  394     jr z, comprobarEntidades1lvl5
+   0243 FE 03         [ 7]  395     cp #0x03
+   0245 28 2A         [12]  396     jr z, comprobarEntidades2lvl5
+   0247 FE 06         [ 7]  397     cp #0x06
+   0249 28 35         [12]  398     jr z, comprobarEntidades3lvl5
+   024B FE 07         [ 7]  399     cp #0x07
+   024D 28 40         [12]  400     jr z, comprobarEntidades4lvl5
+   024F FE 0B         [ 7]  401     cp #0x0B
+   0251 28 4B         [12]  402     jr z, comprobarEntidades5lvl5
+   0253 FE 0F         [ 7]  403     cp #0x0F
+   0255 28 56         [12]  404     jr z, comprobarEntidades6lvl5
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 13.
+Hexadecimal [16-Bits]
+
+
+
+   0257 FE 13         [ 7]  405     cp #0x13
+   0259 CA BC 02      [10]  406     jp z, comprobarEntidades7lvl5
+   025C FE 17         [ 7]  407     cp #0x17
+   025E CA CB 02      [10]  408     jp z, comprobarEntidades8lvl5
+   0261 C9            [10]  409     ret
+                            410 
+   0262                     411     comprobarEntidades1lvl5:
+   0262 3A 00 00      [13]  412     ld a, (level_obstacles)
+   0265 FE 01         [ 7]  413     cp #0x01                ;; Si ya tengo 1 entidades no compruebo ninguna mas
+   0267 C8            [11]  414     ret z
+   0268 3E B4         [ 7]  415         ld a, #0xB4
+   026A CD 00 00      [17]  416         call set_y_last_obstacle 
+   026D CD 00 00      [17]  417         call generar1entidad
+   0270 C9            [10]  418         ret
+                            419     
+   0271                     420     comprobarEntidades2lvl5:
+   0271 3A 00 00      [13]  421     ld a, (level_obstacles)
+   0274 FE 02         [ 7]  422     cp #0x02                ;; Si ya tengo 2 entidades no compruebo ninguna mas
+   0276 C8            [11]  423     ret z
+   0277 3E A4         [ 7]  424         ld a, #0xA4
+   0279 CD 00 00      [17]  425         call set_y_last_obstacle 
+   027C CD 00 00      [17]  426         call generar1entidad
+   027F C9            [10]  427         ret   
+                            428 
+   0280                     429     comprobarEntidades3lvl5:
+   0280 3A 00 00      [13]  430     ld a, (level_obstacles)
+   0283 FE 03         [ 7]  431     cp #0x03                ;; Si ya tengo 3 entidades no compruebo ninguna mas
+   0285 C8            [11]  432     ret z
+   0286 3E 76         [ 7]  433         ld a, #0x76
+   0288 CD 00 00      [17]  434         call set_y_last_obstacle 
+   028B CD 00 00      [17]  435         call generar1entidad
+   028E C9            [10]  436         ret 
+                            437     
+   028F                     438     comprobarEntidades4lvl5:
+   028F 3A 00 00      [13]  439     ld a, (level_obstacles)
+   0292 FE 04         [ 7]  440     cp #0x04                ;; Si ya tengo 4 entidades no compruebo ninguna mas
+   0294 C8            [11]  441     ret z
+   0295 3E 96         [ 7]  442         ld a, #0x96
+   0297 CD 00 00      [17]  443         call set_y_last_obstacle 
+   029A CD 00 00      [17]  444         call generar1entidad
+   029D C9            [10]  445         ret   
+                            446 
+   029E                     447     comprobarEntidades5lvl5:
+   029E 3A 00 00      [13]  448     ld a, (level_obstacles)
+   02A1 FE 05         [ 7]  449     cp #0x05                ;; Si ya tengo 5 entidades no compruebo ninguna mas
+   02A3 C8            [11]  450     ret z
+   02A4 3E AC         [ 7]  451         ld a, #0xAC
+   02A6 CD 00 00      [17]  452         call set_y_wave 
+   02A9 CD 00 00      [17]  453         call generar1entidadWave
+   02AC C9            [10]  454         ret 
+                            455 
+   02AD                     456     comprobarEntidades6lvl5:
+   02AD 3A 00 00      [13]  457     ld a, (level_obstacles)
+   02B0 FE 06         [ 7]  458     cp #0x06                ;; Si ya tengo 6 entidades no compruebo ninguna mas
+   02B2 C8            [11]  459     ret z
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 14.
+Hexadecimal [16-Bits]
+
+
+
+   02B3 3E 76         [ 7]  460         ld a, #0x76
+   02B5 CD 00 00      [17]  461         call set_y_wave 
+   02B8 CD 00 00      [17]  462         call generar1entidadWave
+   02BB C9            [10]  463         ret 
+                            464     
+   02BC                     465     comprobarEntidades7lvl5:
+   02BC 3A 00 00      [13]  466      ld a, (level_obstacles)
+   02BF FE 07         [ 7]  467      cp #0x07                ;; Si ya tengo 7 entidades no compruebo ninguna mas
+   02C1 C8            [11]  468      ret z
+   02C2 3E AC         [ 7]  469         ld a, #0xAC
+   02C4 CD 00 00      [17]  470         call set_y_wave 
+   02C7 CD 00 00      [17]  471         call generar1entidadWave
+   02CA C9            [10]  472         ret 
+                            473 
+   02CB                     474     comprobarEntidades8lvl5:
+   02CB 3A 00 00      [13]  475      ld a, (level_obstacles)
+   02CE FE 08         [ 7]  476      cp #0x08                ;; Si ya tengo 8 entidades no compruebo ninguna mas
+   02D0 C8            [11]  477      ret z
+   02D1 3E AC         [ 7]  478         ld a, #0xAC
+   02D3 CD 00 00      [17]  479         call set_y_wave 
+   02D6 CD 00 00      [17]  480         call generar1entidadWave
+   02D9 C9            [10]  481         ret 
+                            482 
+                            483 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                            484 ;;
+                            485 ;;
+                            486 ;;  NIVEL 6
+                            487 ;;
+                            488 ;;
+                            489 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   02DA                     490 man_game_controller_lvl_6::
+   02DA 3A 00 00      [13]  491     ld a, (_level_seconds)  
+   02DD FE 01         [ 7]  492     cp #0x01                      
+   02DF 28 1F         [12]  493     jr z, comprobarEntidades1lvl6
+   02E1 FE 05         [ 7]  494     cp #0x05
+   02E3 28 2A         [12]  495     jr z, comprobarEntidades2lvl6
+   02E5 FE 09         [ 7]  496     cp #0x09
+   02E7 28 47         [12]  497     jr z, comprobarEntidades3lvl6
+   02E9 FE 0D         [ 7]  498     cp #0x0D
+   02EB 28 52         [12]  499     jr z, comprobarEntidades4lvl6
+   02ED FE 11         [ 7]  500     cp #0x11
+   02EF 28 6F         [12]  501     jr z, comprobarEntidades5lvl6
+   02F1 FE 15         [ 7]  502     cp #0x15
+   02F3 28 7A         [12]  503     jr z, comprobarEntidades6lvl6
+   02F5 FE 18         [ 7]  504     cp #0x18
+   02F7 CA 7E 03      [10]  505     jp z, comprobarEntidades7lvl6
+   02FA FE 19         [ 7]  506     cp #0x19
+   02FC CA 8D 03      [10]  507     jp z, comprobarEntidades8lvl6
+   02FF C9            [10]  508     ret
+                            509 
+   0300                     510     comprobarEntidades1lvl6:
+   0300 3A 00 00      [13]  511     ld a, (level_obstacles)
+   0303 FE 01         [ 7]  512     cp #0x01                ;; Si ya tengo 1 entidades no compruebo ninguna mas
+   0305 C8            [11]  513     ret z
+   0306 3E AC         [ 7]  514         ld a, #0xAC
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 15.
+Hexadecimal [16-Bits]
+
+
+
+   0308 CD 00 00      [17]  515         call set_y_wave 
+   030B CD 00 00      [17]  516         call generar1entidadWave
+   030E C9            [10]  517         ret
+                            518     
+   030F                     519     comprobarEntidades2lvl6:
+   030F 3A 00 00      [13]  520     ld a, (level_obstacles)
+   0312 FE 03         [ 7]  521     cp #0x03                ;; Si ya tengo 3 entidades no compruebo ninguna mas
+   0314 C8            [11]  522     ret z
+   0315 3E 76         [ 7]  523         ld a, #0x76
+   0317 CD 00 00      [17]  524         call set_y_last_obstacle
+   031A 3E 3C         [ 7]  525         ld a,#0x3C
+   031C CD 00 00      [17]  526         call set_x_last_obstacle
+   031F CD 00 00      [17]  527         call generar1entidad
+                            528         
+   0322 3E 46         [ 7]  529         ld a,#0x46
+   0324 CD 00 00      [17]  530         call set_x_last_obstacle
+   0327 3E B4         [ 7]  531         ld a, #0xB4
+   0329 CD 00 00      [17]  532         call set_y_last_obstacle
+   032C CD 00 00      [17]  533         call generar1entidad
+   032F C9            [10]  534         ret
+                            535 
+   0330                     536     comprobarEntidades3lvl6:
+   0330 3A 00 00      [13]  537     ld a, (level_obstacles)
+   0333 FE 04         [ 7]  538     cp #0x04                ;; Si ya tengo 4 entidades no compruebo ninguna mas
+   0335 C8            [11]  539     ret z
+   0336 3E AC         [ 7]  540         ld a, #0xAC
+   0338 CD 00 00      [17]  541         call set_y_wave 
+   033B CD 00 00      [17]  542         call generar1entidadWave
+   033E C9            [10]  543         ret
+                            544 
+   033F                     545     comprobarEntidades4lvl6:
+   033F 3A 00 00      [13]  546     ld a, (level_obstacles)
+   0342 FE 06         [ 7]  547     cp #0x06                ;; Si ya tengo 6 entidades no compruebo ninguna mas
+   0344 C8            [11]  548     ret z
+   0345 3E 76         [ 7]  549         ld a, #0x76
+   0347 CD 00 00      [17]  550         call set_y_last_obstacle
+   034A 3E 3C         [ 7]  551         ld a,#0x3C
+   034C CD 00 00      [17]  552         call set_x_last_obstacle
+   034F CD 00 00      [17]  553         call generar1entidad
+                            554 
+   0352 3E 46         [ 7]  555         ld a,#0x46
+   0354 CD 00 00      [17]  556         call set_x_last_obstacle
+   0357 3E B4         [ 7]  557         ld a, #0xB4
+   0359 CD 00 00      [17]  558         call set_y_last_obstacle
+   035C CD 00 00      [17]  559         call generar1entidad
+   035F C9            [10]  560         ret   
+                            561 
+   0360                     562     comprobarEntidades5lvl6:
+   0360 3A 00 00      [13]  563     ld a, (level_obstacles)
+   0363 FE 07         [ 7]  564     cp #0x07                ;; Si ya tengo 7 entidades no compruebo ninguna mas
+   0365 C8            [11]  565     ret z
+   0366 3E 76         [ 7]  566         ld a, #0x76
+   0368 CD 00 00      [17]  567         call set_y_wave 
+   036B CD 00 00      [17]  568         call generar1entidadWave
+   036E C9            [10]  569         ret 
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 16.
+Hexadecimal [16-Bits]
+
+
+
+                            570 
+   036F                     571     comprobarEntidades6lvl6:
+   036F 3A 00 00      [13]  572     ld a, (level_obstacles)
+   0372 FE 08         [ 7]  573     cp #0x08                ;; Si ya tengo 8 entidades no compruebo ninguna mas
+   0374 C8            [11]  574     ret z
+   0375 3E AC         [ 7]  575         ld a, #0xAC
+   0377 CD 00 00      [17]  576         call set_y_wave 
+   037A CD 00 00      [17]  577         call generar1entidadWave
+   037D C9            [10]  578         ret 
+                            579     
+   037E                     580     comprobarEntidades7lvl6:
+   037E 3A 00 00      [13]  581      ld a, (level_obstacles)
+   0381 FE 09         [ 7]  582      cp #0x09                ;; Si ya tengo 9 entidades no compruebo ninguna mas
+   0383 C8            [11]  583      ret z
+   0384 3E B4         [ 7]  584         ld a, #0xB4
+   0386 CD 00 00      [17]  585         call set_y_last_obstacle 
+   0389 CD 00 00      [17]  586         call generar1entidad
+   038C C9            [10]  587         ret 
+                            588     
+   038D                     589     comprobarEntidades8lvl6:
+   038D 3A 00 00      [13]  590      ld a, (level_obstacles)
+   0390 FE 0A         [ 7]  591      cp #0x0A                ;; Si ya tengo 10 entidades no compruebo ninguna mas
+   0392 C8            [11]  592      ret z
+   0393 3E 76         [ 7]  593         ld a, #0x76
+   0395 CD 00 00      [17]  594         call set_y_last_obstacle 
+   0398 CD 00 00      [17]  595         call generar1entidad
+   039B C9            [10]  596         ret 
+                            597 
+                            598 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                            599 ;;
+                            600 ;;
+                            601 ;;  NIVEL 7
+                            602 ;;
+                            603 ;;
+                            604 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   039C                     605 man_game_controller_lvl_7::
+   039C 3A 00 00      [13]  606     ld a, (_level_seconds)  
+   039F FE 01         [ 7]  607     cp #0x01                      
+   03A1 28 1F         [12]  608     jr z, comprobarEntidades1lvl7
+   03A3 FE 05         [ 7]  609     cp #0x05
+   03A5 28 2A         [12]  610     jr z, comprobarEntidades2lvl7
+   03A7 FE 06         [ 7]  611     cp #0x06
+   03A9 28 35         [12]  612     jr z, comprobarEntidades3lvl7
+   03AB FE 08         [ 7]  613     cp #0x08
+   03AD 28 40         [12]  614     jr z, comprobarEntidades4lvl7
+   03AF FE 0C         [ 7]  615     cp #0x0C
+   03B1 28 4B         [12]  616     jr z, comprobarEntidades5lvl7
+   03B3 FE 11         [ 7]  617     cp #0x11
+   03B5 28 56         [12]  618     jr z, comprobarEntidades6lvl7
+   03B7 FE 15         [ 7]  619     cp #0x15
+   03B9 CA 1C 04      [10]  620     jp z, comprobarEntidades7lvl7
+   03BC FE 19         [ 7]  621     cp #0x19
+   03BE CA 2B 04      [10]  622     jp z, comprobarEntidades8lvl7
+   03C1 C9            [10]  623     ret
+                            624 
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 17.
+Hexadecimal [16-Bits]
+
+
+
+   03C2                     625     comprobarEntidades1lvl7:
+   03C2 3A 00 00      [13]  626     ld a, (level_obstacles)
+   03C5 FE 01         [ 7]  627     cp #0x01                ;; Si ya tengo 1 entidades no compruebo ninguna mas
+   03C7 C8            [11]  628     ret z
+   03C8 3E AC         [ 7]  629         ld a, #0xAC
+   03CA CD 00 00      [17]  630         call set_y_wave 
+   03CD CD 00 00      [17]  631         call generar1entidadWave
+   03D0 C9            [10]  632         ret
+                            633     
+   03D1                     634     comprobarEntidades2lvl7:
+   03D1 3A 00 00      [13]  635     ld a, (level_obstacles)
+   03D4 FE 02         [ 7]  636     cp #0x02                ;; Si ya tengo 2 entidades no compruebo ninguna mas
+   03D6 C8            [11]  637     ret z
+   03D7 3E 76         [ 7]  638         ld a, #0x76
+   03D9 CD 00 00      [17]  639         call set_y_last_obstacle 
+   03DC CD 00 00      [17]  640         call generar1entidad
+   03DF C9            [10]  641         ret   
+                            642 
+   03E0                     643     comprobarEntidades3lvl7:
+   03E0 3A 00 00      [13]  644     ld a, (level_obstacles)
+   03E3 FE 03         [ 7]  645     cp #0x03                ;; Si ya tengo 3 entidades no compruebo ninguna mas
+   03E5 C8            [11]  646     ret z
+   03E6 3E B4         [ 7]  647         ld a, #0xB4
+   03E8 CD 00 00      [17]  648         call set_y_last_obstacle 
+   03EB CD 00 00      [17]  649         call generar1entidad
+   03EE C9            [10]  650         ret
+                            651 
+   03EF                     652     comprobarEntidades4lvl7:
+   03EF 3A 00 00      [13]  653     ld a, (level_obstacles)
+   03F2 FE 04         [ 7]  654     cp #0x04                ;; Si ya tengo 4 entidades no compruebo ninguna mas
+   03F4 C8            [11]  655     ret z
+   03F5 3E 76         [ 7]  656         ld a, #0x76
+   03F7 CD 00 00      [17]  657         call set_y_last_obstacle 
+   03FA CD 00 00      [17]  658         call generar1entidad
+   03FD C9            [10]  659         ret   
+                            660 
+   03FE                     661     comprobarEntidades5lvl7:
+   03FE 3A 00 00      [13]  662     ld a, (level_obstacles)
+   0401 FE 05         [ 7]  663     cp #0x05                ;; Si ya tengo 5 entidades no compruebo ninguna mas
+   0403 C8            [11]  664     ret z
+   0404 3E AC         [ 7]  665         ld a, #0xAC
+   0406 CD 00 00      [17]  666         call set_y_wave 
+   0409 CD 00 00      [17]  667         call generar1entidadWave
+   040C C9            [10]  668         ret 
+                            669 
+   040D                     670     comprobarEntidades6lvl7:
+   040D 3A 00 00      [13]  671     ld a, (level_obstacles)
+   0410 FE 06         [ 7]  672     cp #0x06                ;; Si ya tengo 6 entidades no compruebo ninguna mas
+   0412 C8            [11]  673     ret z
+   0413 3E 76         [ 7]  674         ld a, #0x76
+   0415 CD 00 00      [17]  675         call set_y_wave 
+   0418 CD 00 00      [17]  676         call generar1entidadWave
+   041B C9            [10]  677         ret 
+                            678     
+   041C                     679     comprobarEntidades7lvl7:
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 18.
+Hexadecimal [16-Bits]
+
+
+
+   041C 3A 00 00      [13]  680      ld a, (level_obstacles)
+   041F FE 07         [ 7]  681      cp #0x07                ;; Si ya tengo 7 entidades no compruebo ninguna mas
+   0421 C8            [11]  682      ret z
+   0422 3E AC         [ 7]  683         ld a, #0xAC
+   0424 CD 00 00      [17]  684         call set_y_wave 
+   0427 CD 00 00      [17]  685         call generar1entidadWave
+   042A C9            [10]  686         ret 
+                            687 
+   042B                     688     comprobarEntidades8lvl7:
+   042B 3A 00 00      [13]  689      ld a, (level_obstacles)
+   042E FE 09         [ 7]  690      cp #0x09                ;; Si ya tengo 9 entidades no compruebo ninguna mas
+   0430 C8            [11]  691      ret z
+   0431 3E 76         [ 7]  692         ld a, #0x76
+   0433 CD 00 00      [17]  693         call set_y_last_obstacle
+   0436 CD 00 00      [17]  694         call generar1entidad
+                            695 
+   0439 3E B4         [ 7]  696         ld a, #0xB4
+   043B CD 00 00      [17]  697         call set_y_last_obstacle
+   043E CD 00 00      [17]  698         call generar1entidad
+   0441 C9            [10]  699         ret 
+                            700 
+                            701 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                            702 ;;
+                            703 ;;
+                            704 ;;  NIVEL 8
+                            705 ;;
+                            706 ;;
+                            707 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   0442                     708 man_game_controller_lvl_8::
+   0442 3A 00 00      [13]  709     ld a, (_level_seconds)  
+   0445 FE 02         [ 7]  710     cp #0x02                      
+   0447 28 1A         [12]  711     jr z, comprobarEntidades1lvl8
+   0449 FE 06         [ 7]  712     cp #0x06
+   044B 28 2D         [12]  713     jr z, comprobarEntidades2lvl8
+   044D FE 09         [ 7]  714     cp #0x09
+   044F 28 40         [12]  715     jr z, comprobarEntidades3lvl8
+   0451 FE 0C         [ 7]  716     cp #0x0C
+   0453 28 4B         [12]  717     jr z, comprobarEntidades4lvl8
+   0455 FE 12         [ 7]  718     cp #0x12
+   0457 28 68         [12]  719     jr z, comprobarEntidades5lvl8
+   0459 FE 15         [ 7]  720     cp #0x15
+   045B 28 73         [12]  721     jr z, comprobarEntidades6lvl8
+   045D FE 1A         [ 7]  722     cp #0x1A
+   045F CA DF 04      [10]  723     jp z, comprobarEntidades7lvl8
+   0462 C9            [10]  724     ret
+                            725 
+   0463                     726     comprobarEntidades1lvl8:
+   0463 3A 00 00      [13]  727     ld a, (level_obstacles)
+   0466 FE 02         [ 7]  728     cp #0x02                ;; Si ya tengo 2 entidades no compruebo ninguna mas
+   0468 C8            [11]  729     ret z
+   0469 3E 76         [ 7]  730         ld a, #0x76
+   046B CD 00 00      [17]  731         call set_y_last_obstacle
+   046E CD 00 00      [17]  732         call generar1entidad
+                            733 
+   0471 3E B4         [ 7]  734         ld a, #0xB4
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 19.
+Hexadecimal [16-Bits]
+
+
+
+   0473 CD 00 00      [17]  735         call set_y_last_obstacle
+   0476 CD 00 00      [17]  736         call generar1entidad
+   0479 C9            [10]  737         ret
+                            738 
+   047A                     739     comprobarEntidades2lvl8:
+   047A 3A 00 00      [13]  740     ld a, (level_obstacles)
+   047D FE 04         [ 7]  741     cp #0x04                ;; Si ya tengo 4 entidades no compruebo ninguna mas
+   047F C8            [11]  742     ret z
+   0480 3E 76         [ 7]  743         ld a, #0x76
+   0482 CD 00 00      [17]  744         call set_y_last_obstacle
+   0485 CD 00 00      [17]  745         call generar1entidad
+                            746         
+   0488 3E B4         [ 7]  747         ld a, #0xB4
+   048A CD 00 00      [17]  748         call set_y_last_obstacle
+   048D CD 00 00      [17]  749         call generar1entidad
+   0490 C9            [10]  750         ret
+                            751     
+   0491                     752     comprobarEntidades3lvl8:
+   0491 3A 00 00      [13]  753     ld a, (level_obstacles)
+   0494 FE 05         [ 7]  754     cp #0x05                ;; Si ya tengo 5 entidades no compruebo ninguna mas
+   0496 C8            [11]  755     ret z
+   0497 3E 76         [ 7]  756         ld a, #0x76
+   0499 CD 00 00      [17]  757         call set_y_last_obstacle
+   049C CD 00 00      [17]  758         call generar1entidad
+   049F C9            [10]  759         ret
+                            760 
+   04A0                     761     comprobarEntidades4lvl8:
+   04A0 3A 00 00      [13]  762     ld a, (level_obstacles)
+   04A3 FE 07         [ 7]  763     cp #0x07                ;; Si ya tengo 7 entidades no compruebo ninguna mas
+   04A5 C8            [11]  764     ret z
+   04A6 3E 76         [ 7]  765         ld a, #0x76
+   04A8 CD 00 00      [17]  766         call set_y_last_obstacle
+   04AB 3E 3C         [ 7]  767         ld a,#0x3C
+   04AD CD 00 00      [17]  768         call set_x_last_obstacle
+   04B0 CD 00 00      [17]  769         call generar1entidad
+                            770 
+   04B3 3E 46         [ 7]  771         ld a,#0x46
+   04B5 CD 00 00      [17]  772         call set_x_last_obstacle
+   04B8 3E B4         [ 7]  773         ld a, #0xB4
+   04BA CD 00 00      [17]  774         call set_y_last_obstacle
+   04BD CD 00 00      [17]  775         call generar1entidad
+   04C0 C9            [10]  776         ret   
+                            777 
+   04C1                     778     comprobarEntidades5lvl8:
+   04C1 3A 00 00      [13]  779     ld a, (level_obstacles)
+   04C4 FE 08         [ 7]  780     cp #0x08                ;; Si ya tengo 8 entidades no compruebo ninguna mas
+   04C6 C8            [11]  781     ret z
+   04C7 3E AC         [ 7]  782         ld a, #0xAC
+   04C9 CD 00 00      [17]  783         call set_y_wave 
+   04CC CD 00 00      [17]  784         call generar1entidadWave
+   04CF C9            [10]  785         ret 
+                            786 
+   04D0                     787     comprobarEntidades6lvl8:
+   04D0 3A 00 00      [13]  788     ld a, (level_obstacles)
+   04D3 FE 09         [ 7]  789     cp #0x09                ;; Si ya tengo 9 entidades no compruebo ninguna mas
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 20.
+Hexadecimal [16-Bits]
+
+
+
+   04D5 C8            [11]  790     ret z
+   04D6 3E 76         [ 7]  791         ld a, #0x76
+   04D8 CD 00 00      [17]  792         call set_y_wave 
+   04DB CD 00 00      [17]  793         call generar1entidadWave
+   04DE C9            [10]  794         ret 
+                            795     
+   04DF                     796     comprobarEntidades7lvl8:
+   04DF 3A 00 00      [13]  797      ld a, (level_obstacles)
+   04E2 FE 0B         [ 7]  798      cp #0x0B                ;; Si ya tengo 11 entidades no compruebo ninguna mas
+   04E4 C8            [11]  799      ret z
+   04E5 3E 76         [ 7]  800         ld a, #0x76
+   04E7 CD 00 00      [17]  801         call set_y_last_obstacle
+   04EA CD 00 00      [17]  802         call generar1entidad
+   04ED 3E B4         [ 7]  803         ld a, #0xB4
+   04EF CD 00 00      [17]  804         call set_y_last_obstacle
+   04F2 CD 00 00      [17]  805         call generar1entidad
+   04F5 C9            [10]  806         ret 
+                            807 
+                            808 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                            809 ;;
+                            810 ;;
+                            811 ;;  NIVEL 9
+                            812 ;;
+                            813 ;;
+                            814 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   04F6                     815 man_game_controller_lvl_9::
+   04F6 3A 00 00      [13]  816     ld a, (_level_seconds)  
+   04F9 FE 02         [ 7]  817     cp #0x02                      
+   04FB 28 1A         [12]  818     jr z, comprobarEntidades1lvl9
+   04FD FE 03         [ 7]  819     cp #0x03
+   04FF 28 25         [12]  820     jr z, comprobarEntidades2lvl9
+   0501 FE 05         [ 7]  821     cp #0x05
+   0503 28 30         [12]  822     jr z, comprobarEntidades3lvl9
+   0505 FE 08         [ 7]  823     cp #0x08
+   0507 28 3B         [12]  824     jr z, comprobarEntidades4lvl9
+   0509 FE 0D         [ 7]  825     cp #0x0D
+   050B 28 58         [12]  826     jr z, comprobarEntidades5lvl9
+   050D FE 16         [ 7]  827     cp #0x16
+   050F 28 73         [12]  828     jr z, comprobarEntidades6lvl9
+   0511 FE 19         [ 7]  829     cp #0x19
+   0513 CA 93 05      [10]  830     jp z, comprobarEntidades7lvl9
+   0516 C9            [10]  831     ret
+                            832 
+   0517                     833     comprobarEntidades1lvl9:
+   0517 3A 00 00      [13]  834     ld a, (level_obstacles)
+   051A FE 01         [ 7]  835     cp #0x01                ;; Si ya tengo 1 entidades no compruebo ninguna mas
+   051C C8            [11]  836     ret z
+   051D 3E B4         [ 7]  837         ld a, #0xB4
+   051F CD 00 00      [17]  838         call set_y_last_obstacle
+   0522 CD 00 00      [17]  839         call generar1entidad
+   0525 C9            [10]  840         ret
+                            841     
+   0526                     842     comprobarEntidades2lvl9:
+   0526 3A 00 00      [13]  843     ld a, (level_obstacles)
+   0529 FE 02         [ 7]  844     cp #0x02                ;; Si ya tengo 2 entidades no compruebo ninguna mas
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 21.
+Hexadecimal [16-Bits]
+
+
+
+   052B C8            [11]  845     ret z
+   052C 3E B4         [ 7]  846         ld a, #0xB4
+   052E CD 00 00      [17]  847         call set_y_last_obstacle
+   0531 CD 00 00      [17]  848         call generar1entidad
+   0534 C9            [10]  849         ret
+                            850 
+   0535                     851     comprobarEntidades3lvl9:
+   0535 3A 00 00      [13]  852     ld a, (level_obstacles)
+   0538 FE 03         [ 7]  853     cp #0x03                ;; Si ya tengo 3 entidades no compruebo ninguna mas
+   053A C8            [11]  854     ret z
+   053B 3E 76         [ 7]  855         ld a, #0x76
+   053D CD 00 00      [17]  856         call set_y_last_obstacle
+   0540 CD 00 00      [17]  857         call generar1entidad
+   0543 C9            [10]  858         ret 
+                            859     
+   0544                     860     comprobarEntidades4lvl9:
+   0544 3A 00 00      [13]  861     ld a, (level_obstacles)
+   0547 FE 05         [ 7]  862     cp #0x05               ;; Si ya tengo 5 entidades no compruebo ninguna mas
+   0549 C8            [11]  863     ret z
+   054A 3E 76         [ 7]  864         ld a, #0x76
+   054C CD 00 00      [17]  865         call set_y_last_obstacle
+   054F 3E 3C         [ 7]  866         ld a,#0x3C
+   0551 CD 00 00      [17]  867         call set_x_last_obstacle
+   0554 CD 00 00      [17]  868         call generar1entidad
+                            869 
+   0557 3E 46         [ 7]  870         ld a,#0x46
+   0559 CD 00 00      [17]  871         call set_x_last_obstacle
+   055C 3E B4         [ 7]  872         ld a, #0xB4
+   055E CD 00 00      [17]  873         call set_y_last_obstacle
+   0561 CD 00 00      [17]  874         call generar1entidad
+   0564 C9            [10]  875         ret   
+                            876 
+   0565                     877     comprobarEntidades5lvl9:
+   0565 3A 00 00      [13]  878     ld a, (level_obstacles)
+   0568 FE 08         [ 7]  879     cp #0x08                ;; Si ya tengo 8 entidades no compruebo ninguna mas
+   056A C8            [11]  880     ret z
+   056B 3E 76         [ 7]  881         ld a, #0x76
+   056D CD 00 00      [17]  882         call set_y_last_obstacle
+   0570 CD 00 00      [17]  883         call generar1entidad
+                            884 
+   0573 3E 86         [ 7]  885         ld a, #0x86
+   0575 CD 00 00      [17]  886         call set_y_last_obstacle
+   0578 CD 00 00      [17]  887         call generar1entidad
+                            888         
+   057B 3E B4         [ 7]  889         ld a, #0xB4
+   057D CD 00 00      [17]  890         call set_y_last_obstacle
+   0580 CD 00 00      [17]  891         call generar1entidad
+   0583 C9            [10]  892         ret 
+                            893 
+   0584                     894     comprobarEntidades6lvl9:
+   0584 3A 00 00      [13]  895     ld a, (level_obstacles)
+   0587 FE 09         [ 7]  896     cp #0x09                ;; Si ya tengo 9 entidades no compruebo ninguna mas
+   0589 C8            [11]  897     ret z
+   058A 3E AC         [ 7]  898         ld a, #0xAC
+   058C CD 00 00      [17]  899         call set_y_wave 
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 22.
+Hexadecimal [16-Bits]
+
+
+
+   058F CD 00 00      [17]  900         call generar1entidadWave
+   0592 C9            [10]  901         ret 
+                            902     
+   0593                     903     comprobarEntidades7lvl9:
+   0593 3A 00 00      [13]  904      ld a, (level_obstacles)
+   0596 FE 0A         [ 7]  905      cp #0x0A                ;; Si ya tengo 10 entidades no compruebo ninguna mas
+   0598 C8            [11]  906      ret z
+   0599 3E 76         [ 7]  907         ld a, #0x76
+   059B CD 00 00      [17]  908         call set_y_last_obstacle 
+   059E CD 00 00      [17]  909         call generar1entidad
+   05A1 C9            [10]  910         ret 
+                            911 
+                            912 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+                            913 ;;
+                            914 ;;
+                            915 ;;  NIVEL 10
+                            916 ;;
+                            917 ;;
+                            918 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+   05A2                     919 man_game_controller_lvl_10::
+   05A2 3A 00 00      [13]  920     ld a, (_level_seconds)  
+   05A5 FE 01         [ 7]  921     cp #0x01                      
+   05A7 28 16         [12]  922     jr z, comprobarEntidades1lvl10
+   05A9 FE 07         [ 7]  923     cp #0x07
+   05AB 28 29         [12]  924     jr z, comprobarEntidades2lvl10
+   05AD FE 0B         [ 7]  925     cp #0x0B
+   05AF 28 44         [12]  926     jr z, comprobarEntidades3lvl10
+   05B1 FE 11         [ 7]  927     cp #0x11
+   05B3 28 57         [12]  928     jr z, comprobarEntidades4lvl10
+   05B5 FE 17         [ 7]  929     cp #0x17
+   05B7 28 72         [12]  930     jr z, comprobarEntidades5lvl10
+   05B9 FE 1B         [ 7]  931     cp #0x1B
+   05BB CA 4C 06      [10]  932     jp z, comprobarEntidades6lvl10
+   05BE C9            [10]  933     ret
+                            934 
+   05BF                     935     comprobarEntidades1lvl10:
+   05BF 3A 00 00      [13]  936     ld a, (level_obstacles)
+   05C2 FE 02         [ 7]  937     cp #0x02                ;; Si ya tengo 2 entidades no compruebo ninguna mas
+   05C4 C8            [11]  938     ret z
+   05C5 3E 76         [ 7]  939         ld a, #0x76
+   05C7 CD 00 00      [17]  940         call set_y_last_obstacle
+   05CA CD 00 00      [17]  941         call generar1entidad
+                            942 
+   05CD 3E B4         [ 7]  943         ld a, #0xB4
+   05CF CD 00 00      [17]  944         call set_y_last_obstacle
+   05D2 CD 00 00      [17]  945         call generar1entidad
+   05D5 C9            [10]  946         ret
+                            947 
+   05D6                     948     comprobarEntidades2lvl10:
+   05D6 3A 00 00      [13]  949     ld a, (level_obstacles)
+   05D9 FE 05         [ 7]  950     cp #0x05                ;; Si ya tengo 5 entidades no compruebo ninguna mas
+   05DB C8            [11]  951     ret z
+   05DC 3E 76         [ 7]  952         ld a, #0x76
+   05DE CD 00 00      [17]  953         call set_y_last_obstacle
+   05E1 CD 00 00      [17]  954         call generar1entidad
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 23.
+Hexadecimal [16-Bits]
+
+
+
+                            955         
+   05E4 3E 86         [ 7]  956         ld a, #0x86
+   05E6 CD 00 00      [17]  957         call set_y_last_obstacle
+   05E9 CD 00 00      [17]  958         call generar1entidad
+                            959         
+   05EC 3E B4         [ 7]  960         ld a, #0xB4
+   05EE CD 00 00      [17]  961         call set_y_last_obstacle
+   05F1 CD 00 00      [17]  962         call generar1entidad
+   05F4 C9            [10]  963         ret
+                            964 
+   05F5                     965     comprobarEntidades3lvl10:
+   05F5 3A 00 00      [13]  966     ld a, (level_obstacles)
+   05F8 FE 07         [ 7]  967     cp #0x07                ;; Si ya tengo 7 entidades no compruebo ninguna mas
+   05FA C8            [11]  968     ret z
+   05FB 3E 86         [ 7]  969         ld a, #0x86
+   05FD CD 00 00      [17]  970         call set_y_last_obstacle
+   0600 CD 00 00      [17]  971         call generar1entidad
+                            972 
+   0603 3E B4         [ 7]  973         ld a, #0xB4
+   0605 CD 00 00      [17]  974         call set_y_last_obstacle
+   0608 CD 00 00      [17]  975         call generar1entidad
+   060B C9            [10]  976         ret
+                            977 
+   060C                     978     comprobarEntidades4lvl10:
+   060C 3A 00 00      [13]  979     ld a, (level_obstacles)
+   060F FE 0A         [ 7]  980     cp #0x0A                ;; Si ya tengo 10 entidades no compruebo ninguna mas
+   0611 C8            [11]  981     ret z
+   0612 3E 76         [ 7]  982         ld a, #0x76
+   0614 CD 00 00      [17]  983         call set_y_last_obstacle
+   0617 CD 00 00      [17]  984         call generar1entidad
+                            985         
+   061A 3E A4         [ 7]  986         ld a, #0xA4
+   061C CD 00 00      [17]  987         call set_y_last_obstacle
+   061F CD 00 00      [17]  988         call generar1entidad
+                            989         
+   0622 3E B4         [ 7]  990         ld a, #0xB4
+   0624 CD 00 00      [17]  991         call set_y_last_obstacle
+   0627 CD 00 00      [17]  992         call generar1entidad
+   062A C9            [10]  993         ret   
+                            994 
+   062B                     995     comprobarEntidades5lvl10:
+   062B 3A 00 00      [13]  996     ld a, (level_obstacles)
+   062E FE 0C         [ 7]  997     cp #0x0C                ;; Si ya tengo 12 entidades no compruebo ninguna mas
+   0630 C8            [11]  998     ret z
+   0631 3E 76         [ 7]  999         ld a, #0x76
+   0633 CD 00 00      [17] 1000         call set_y_last_obstacle
+   0636 3E 3C         [ 7] 1001         ld a,#0x3C
+   0638 CD 00 00      [17] 1002         call set_x_last_obstacle
+   063B CD 00 00      [17] 1003         call generar1entidad
+                           1004         
+   063E 3E 46         [ 7] 1005         ld a,#0x46
+   0640 CD 00 00      [17] 1006         call set_x_last_obstacle
+   0643 3E B4         [ 7] 1007         ld a, #0xB4
+   0645 CD 00 00      [17] 1008         call set_y_last_obstacle
+   0648 CD 00 00      [17] 1009         call generar1entidad
+ASxxxx Assembler V02.00 + NoICE + SDCC mods  (Zilog Z80 / Hitachi HD64180), page 24.
+Hexadecimal [16-Bits]
+
+
+
+   064B C9            [10] 1010         ret 
+                           1011 
+   064C                    1012     comprobarEntidades6lvl10:
+   064C 3A 00 00      [13] 1013     ld a, (level_obstacles)
+   064F FE 0E         [ 7] 1014     cp #0x0E                ;; Si ya tengo 14 entidades no compruebo ninguna mas
+   0651 C8            [11] 1015     ret z
+   0652 3E 76         [ 7] 1016         ld a, #0x76
+   0654 CD 00 00      [17] 1017         call set_y_last_obstacle
+   0657 3E 3C         [ 7] 1018         ld a,#0x3C
+   0659 CD 00 00      [17] 1019         call set_x_last_obstacle
+   065C CD 00 00      [17] 1020         call generar1entidad
+                           1021         
+   065F 3E 43         [ 7] 1022         ld a,#0x43
+   0661 CD 00 00      [17] 1023         call set_x_last_obstacle
+   0664 3E B4         [ 7] 1024         ld a, #0xB4
+   0666 CD 00 00      [17] 1025         call set_y_last_obstacle
+   0669 CD 00 00      [17] 1026         call generar1entidad
+   066C C9            [10] 1027         ret 
+                           1028     
+   066D                    1029     comprobarEntidades7lvl10:
+   066D 3A 00 00      [13] 1030      ld a, (level_obstacles)
+   0670 FE 0F         [ 7] 1031      cp #0x0F                ;; Si ya tengo 15 entidades no compruebo ninguna mas
+   0672 C8            [11] 1032      ret z
+   0673 3E B4         [ 7] 1033         ld a, #0xB4
+   0675 CD 00 00      [17] 1034         call set_y_last_obstacle 
+   0678 CD 00 00      [17] 1035         call generar1entidad
+   067B C9            [10] 1036         ret 

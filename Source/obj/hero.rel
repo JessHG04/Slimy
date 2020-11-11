@@ -1,0 +1,95 @@
+XL2
+H 1 areas 29 global symbols
+M cpct_keyboard
+S cpct_setPalette_asm Ref0000
+S cpct_isKeyPressed_asm Ref0000
+S cpct_setPALColour_asm Ref0000
+S cpct_drawStringM0_asm Ref0000
+S sys_physics_startFall Ref0000
+S _hero_sp_00 Ref0000
+S cpct_drawSprite_asm Ref0000
+S _hero_sp_01 Ref0000
+S _hero_sp_02 Ref0000
+S _hero_sp_03 Ref0000
+S _hero_sp_04 Ref0000
+S _hero_sp_05 Ref0000
+S _hero_sp_06 Ref0000
+S _hero_sp_07 Ref0000
+S _hero_sp_08 Ref0000
+S .__.ABS. Def0000
+S sys_physics_fall_control Ref0000
+S sys_physics_move_hero_right Ref0000
+S sys_physics_estoy_arriba Ref0000
+S sys_physics_end_of_jump Ref0000
+S sys_collision_check Ref0000
+S sys_physics_startJump Ref0000
+S sys_physics_move_hero_left Ref0000
+S cpct_zx7b_decrunch_s_asm Ref0000
+S cpct_setVideoMode_asm Ref0000
+S cpct_waitVSYNC_asm Ref0000
+S cpct_akp_musicInit_asm Ref0000
+S cpct_disableFirmware_asm Ref0000
+S cpct_akp_musicPlay_asm Ref0000
+S cpct_drawSolidBox_asm Ref0000
+S sys_physics_jump_control Ref0000
+S cpct_setDrawCharM0_asm Ref0000
+S cpct_scanKeyboard_asm Ref0000
+S cpct_getScreenPtr_asm Ref0000
+A _CODE size 72 flags 0 addr 0
+S hero_init Def000A
+S hero_update Def0000
+S hero_restart Def001F
+S heroe Def000A
+S keyboard_inputs Def0037
+S hero_getIXPtr Def0015
+S hero_getIYPtr Def001A
+T 00 00
+R 00 00 00 00
+T 00 00 CD 00 00 CD 00 00 CD 37 00 C9
+R 00 00 00 00 02 03 10 00 02 06 1E 00 00 09 00 00
+T 0A 00
+R 00 00 00 00
+T 0A 00
+R 00 00 00 00
+T 0A 00 00 B4 06 09 00 00 03 FF 0B 00 C9
+R 00 00 00 00
+T 15 00
+R 00 00 00 00
+T 15 00 DD 21 0A 00 C9
+R 00 00 00 00 00 04 00 00
+T 1A 00
+R 00 00 00 00
+T 1A 00 FD 21 0A 00 C9
+R 00 00 00 00 00 04 00 00
+T 1F 00
+R 00 00 00 00
+T 1F 00 CD 15 00 3E 00 DD 77 00 3E B4 DD 77 01 3E
+R 00 00 00 00 00 03 00 00
+T 2D 00 FF DD 77 07 3E 0B DD 77 08 C9
+R 00 00 00 00
+T 37 00
+R 00 00 00 00
+T 37 00 CD 15 00 CD 00 00 21 03 08 CD 00 00 FE 00
+R 00 00 00 00 00 03 00 00 02 06 20 00 02 0C 01 00
+T 45 00 28 03 CD 00 00
+R 00 00 00 00 02 05 11 00
+T 4A 00
+R 00 00 00 00
+T 4A 00 21 04 04 CD 00 00 FE 00 28 03 CD 00 00
+R 00 00 00 00 02 06 01 00 02 0D 16 00
+T 57 00
+R 00 00 00 00
+T 57 00 21 08 08 CD 00 00 FE 00 28 03 CD 00 00
+R 00 00 00 00 02 06 01 00 02 0D 15 00
+T 64 00
+R 00 00 00 00
+T 64 00
+R 00 00 00 00
+T 64 00 21 08 20 CD 00 00 FE 00 28 03 CD 00 00
+R 00 00 00 00 02 06 01 00 02 0D 04 00
+T 71 00
+R 00 00 00 00
+T 71 00
+R 00 00 00 00
+T 71 00 C9
+R 00 00 00 00

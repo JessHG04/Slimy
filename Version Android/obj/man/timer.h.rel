@@ -1,0 +1,10 @@
+XL2
+H 1 areas 6 global symbols
+M Timer_System
+S timer_render Ref0000
+S timer_control Ref0000
+S timer_menos1s Ref0000
+S timer_clear Ref0000
+S timer_value Ref0000
+S .__.ABS. Def0000
+A _CODE size 0 flags 0 addr 0

@@ -1,0 +1,13 @@
+XL2
+H 1 areas A global symbols
+S sys_physics_startFall Ref0000
+S .__.ABS. Def0000
+S sys_physics_fall_control Ref0000
+S sys_physics_move_hero_right Ref0000
+S sys_physics_estoy_arriba Ref0000
+S sys_physics_end_of_jump Ref0000
+S sys_collision_check Ref0000
+S sys_physics_startJump Ref0000
+S sys_physics_move_hero_left Ref0000
+S sys_physics_jump_control Ref0000
+A _CODE size 0 flags 0 addr 0
